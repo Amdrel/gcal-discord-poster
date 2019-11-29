@@ -10,6 +10,7 @@ pylint = "*"
 [packages]
 google-api-python-client = "*"
 google-auth = "*"
+google-auth-oauthlib = "*"
 
 [requires]
 python_version = "3.7"
