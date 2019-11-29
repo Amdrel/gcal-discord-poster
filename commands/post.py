@@ -1,5 +1,6 @@
 """gcal-discord-poster post subcommand."""
 
+import argparse
 import logging
 
 COMMAND = "post"
@@ -7,7 +8,8 @@ COMMAND = "post"
 LOG = logging.getLogger("gcal-discord-poster")
 
 
-def register_parser(parser):
+# pylint: disable=protected-access
+def register_parser(parser: argparse._SubParsersAction):
     """Constructs a subparser for the post subcommand."""
 
     subparser = parser.add_parser(
@@ -18,7 +20,5 @@ def register_parser(parser):
     return subparser
 
 
-def run(config, args):
+def run(config: dict, args: argparse.Namespace):
     """Runs the post command with the provided arguments."""
-
-    pass

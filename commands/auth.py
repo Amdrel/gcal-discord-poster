@@ -1,19 +1,17 @@
 """gcal-discord-poster auth subcommand."""
 
+import argparse
 import logging
 
-COMMAND = "auth"
+import conf
 
-# Google API scopes required for the operation of this tool.
-SCOPES = {
-    "https://www.googleapis.com/auth/calendar.readonly",
-    "https://www.googleapis.com/auth/calendar.events.readonly",
-}
+COMMAND = "auth"
 
 LOG = logging.getLogger("gcal-discord-poster")
 
 
-def register_parser(parser):
+# pylint: disable=protected-access
+def register_parser(parser: argparse._SubParsersAction):
     """Constructs a subparser for the auth subcommand."""
 
     subparser = parser.add_parser(
@@ -25,7 +23,12 @@ def register_parser(parser):
     return subparser
 
 
-def run(config, args):
+def run(config: dict, args: argparse.Namespace):
     """Runs the auth command with the provided arguments."""
 
-    pass
+    credentials = conf.get_saved_google_credentials(config)
+    if not credentials:
+        credentials = conf.get_new_google_credentials(
+            config, args.client_id_file)
+
+    print(credentials)
