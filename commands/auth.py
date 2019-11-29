@@ -28,7 +28,7 @@ def run(config: dict, args: argparse.Namespace):
 
     credentials = conf.get_saved_google_credentials(config)
     if not credentials:
-        credentials = conf.get_new_google_credentials(
-            config, args.client_id_file)
-
-    print(credentials)
+        LOG.info("CLI is not authenticated, starting OAuth2 flow.")
+        conf.get_new_google_credentials(config, args.client_id_file)
+    else:
+        LOG.info("CLI is already authenticated.")
