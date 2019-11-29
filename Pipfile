@@ -11,6 +11,7 @@ pylint = "*"
 google-api-python-client = "*"
 google-auth = "*"
 google-auth-oauthlib = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.7"

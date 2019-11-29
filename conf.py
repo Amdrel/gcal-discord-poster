@@ -4,8 +4,10 @@ import json
 import logging
 import os
 
+from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
+
 
 CONFIG_DIR = "~/.config/gcal-discord-poster"
 CONFIG_FILE_NAME = "config.json"
@@ -23,8 +25,7 @@ LOG = logging.getLogger("gcal-discord-poster")
 
 
 def get_new_google_credentials(
-        config: dict, client_id_path: str, save=True
-) -> Credentials:
+        config: dict, client_id_path: str, save=True) -> Credentials:
     """Obtains new Google access credentials via interactive OAuth2 flow."""
 
     flow = InstalledAppFlow.from_client_secrets_file(
@@ -56,8 +57,14 @@ def get_saved_google_credentials(config: dict) -> Credentials:
     ):
         return None
 
-    return Credentials(**credentials_dict)
+    credentials = Credentials(**credentials_dict)
+    if not credentials.valid:
+        if credentials.expired and credentials.refresh_token:
+            credentials.refresh(Request())
+        else:
+            return None
 
+    return credentials
 
 def stash_google_credentials(config: dict, credentials: Credentials) -> dict:
     """Stash Google OAuth2 credentials in a config dict."""

@@ -50,12 +50,12 @@ def main():
     app_config = conf.get_config()
 
     if args.command == auth.COMMAND:
-        auth.run(app_config, args)
-    elif args.command == post.COMMAND:
-        post.run(app_config, args)
-    else:
-        parser.print_usage()
+        return auth.run(app_config, args)
+    if args.command == post.COMMAND:
+        return post.run(app_config, args)
+
+    parser.print_usage()
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

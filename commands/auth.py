@@ -3,6 +3,7 @@
 import argparse
 import logging
 
+import commands
 import conf
 
 COMMAND = "auth"
@@ -10,8 +11,7 @@ COMMAND = "auth"
 LOG = logging.getLogger("gcal-discord-poster")
 
 
-# pylint: disable=protected-access
-def register_parser(parser: argparse._SubParsersAction):
+def register_parser(parser):
     """Constructs a subparser for the auth subcommand."""
 
     subparser = parser.add_parser(
@@ -32,3 +32,5 @@ def run(config: dict, args: argparse.Namespace):
         conf.get_new_google_credentials(config, args.client_id_file)
     else:
         LOG.info("CLI is already authenticated.")
+
+    return commands.EXIT_SUCCESS
