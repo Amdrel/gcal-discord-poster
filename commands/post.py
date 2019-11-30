@@ -114,9 +114,6 @@ def post_discord_webhook(url: str, event: dict, attributes: dict):
 
     webhook.add_embed(embed)
 
-    # import json
-    # print(json.dumps(webhook.json, indent=2, sort_keys=True))
-
     return webhook.execute()
 
 
