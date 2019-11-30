@@ -187,7 +187,7 @@ def register_parser(config: dict, parser):
 
     subparser = parser.add_parser(
         COMMAND,
-        prog="gcal-discord-poster post",
+        prog="gcal_discord_poster.py post",
         description="Posts google calendar events to Discord.")
     subparser.add_argument(
         "-c", "--calendar", dest="calendar",
@@ -227,20 +227,12 @@ def run(config: dict, args: argparse.Namespace):
             LOG.error("No calendar passed.")
             return commands.EXIT_GENERIC_ERROR
 
-        LOG.info("Using saved calendar, '%s'.", calendar)
-    else:
-        LOG.info("Using passed calendar, '%s'.", calendar)
-
     # Use the webhook value from the config if not specified in the args.
     if not webhook_url:
         webhook_url = config.get("webhook_url")
         if not webhook_url:
             LOG.error("No webhook url passed.")
             return commands.EXIT_GENERIC_ERROR
-
-        LOG.info("Using saved webhook url, '%s'.", webhook_url)
-    else:
-        LOG.info("Using passed webhook url, '%s'.", webhook_url)
 
     # Stash the argument values in the config to save to the filesystem later.
     config["calendar"] = calendar

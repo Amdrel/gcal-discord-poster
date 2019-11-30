@@ -16,7 +16,7 @@ def register_parser(config: dict, parser):
 
     subparser = parser.add_parser(
         COMMAND,
-        prog="gcal-discord-poster auth",
+        prog="gcal_discord_poster.py auth",
         description="Authenticates with Google so the program can get access "
                     "to the user's calendar.")
 

@@ -21,7 +21,7 @@ def get_parser(config: dict):
     """Returns the top-level parser for gcal-discord-poster."""
 
     parser = argparse.ArgumentParser(
-        prog="gcal-discord-poster",
+        prog="gcal_discord_poster.py",
         description="Translates upcoming calendar events into Discord embeds "
                     "and posts them to a webhook url.")
     parser.add_argument(
@@ -42,7 +42,7 @@ def main():
 
     handler = logging.StreamHandler(sys.stdout)
     LOG.addHandler(handler)
-    LOG.setLevel(logging.DEBUG)
+    LOG.setLevel(logging.INFO)
 
     app_config = conf.get_config()
 
