@@ -31,7 +31,7 @@ import sys
 
 import commands.auth as auth
 import commands.post as post
-import conf
+import utils.conf as conf
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 CLIENT_ID_PATH = os.path.join(DIR_PATH, "client_id.json")
@@ -72,12 +72,12 @@ def main():
     args = parser.parse_args()
 
     if args.command == auth.COMMAND:
-        return auth.run(app_config, args)
+        sys.exit(auth.run(app_config, args))
     if args.command == post.COMMAND:
-        return post.run(app_config, args)
+        sys.exit(post.run(app_config, args))
 
     parser.print_usage()
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

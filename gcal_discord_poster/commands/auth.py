@@ -26,7 +26,7 @@ import argparse
 import logging
 
 import commands
-import conf
+import utils.conf as conf
 
 COMMAND = "auth"
 

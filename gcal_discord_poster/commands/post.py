@@ -34,7 +34,7 @@ from bs4 import BeautifulSoup
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from googleapiclient.discovery import build
 
-import conf
+import utils.conf as conf
 
 COMMAND = "post"
 
