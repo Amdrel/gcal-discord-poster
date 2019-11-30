@@ -30,7 +30,7 @@ setup(
     entry_points={
         "console_scripts": ["gcal_discord_poster = gcal_discord_poster.__main__:main"]
     },
-    version="0.1",
+    version="0.1.0",
     description="Translates upcoming calendar events into Discord embeds and "
                 "posts them to a webhook url.",
     author="Walter Kuppens",
