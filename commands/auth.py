@@ -11,7 +11,7 @@ COMMAND = "auth"
 LOG = logging.getLogger("gcal-discord-poster")
 
 
-def register_parser(parser):
+def register_parser(config: dict, parser):
     """Constructs a subparser for the auth subcommand."""
 
     subparser = parser.add_parser(

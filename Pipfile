@@ -12,6 +12,8 @@ google-api-python-client = "*"
 google-auth = "*"
 google-auth-oauthlib = "*"
 beautifulsoup4 = "*"
+inflection = "*"
+discord-webhook = "*"
 
 [requires]
 python_version = "3.7"

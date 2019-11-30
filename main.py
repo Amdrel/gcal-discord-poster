@@ -17,7 +17,7 @@ CLIENT_ID_PATH = os.path.join(DIR_PATH, "client_id.json")
 LOG = logging.getLogger("gcal-discord-poster")
 
 
-def get_parser():
+def get_parser(config: dict):
     """Returns the top-level parser for gcal-discord-poster."""
 
     parser = argparse.ArgumentParser(
@@ -31,8 +31,8 @@ def get_parser():
              "script is installed to.")
 
     subparsers = parser.add_subparsers(help="commands", dest="command")
-    auth.register_parser(subparsers)
-    post.register_parser(subparsers)
+    auth.register_parser(config, subparsers)
+    post.register_parser(config, subparsers)
 
     return parser
 
@@ -44,10 +44,10 @@ def main():
     LOG.addHandler(handler)
     LOG.setLevel(logging.DEBUG)
 
-    parser = get_parser()
-    args = parser.parse_args()
-
     app_config = conf.get_config()
+
+    parser = get_parser(app_config)
+    args = parser.parse_args()
 
     if args.command == auth.COMMAND:
         return auth.run(app_config, args)
