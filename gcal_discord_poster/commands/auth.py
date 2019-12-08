@@ -25,8 +25,8 @@
 import argparse
 import logging
 
-import commands
-import utils.conf as conf
+import gcal_discord_poster.commands as commands
+import gcal_discord_poster.utils.conf as conf
 
 COMMAND = "auth"
 

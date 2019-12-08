@@ -29,9 +29,9 @@ import logging
 import os
 import sys
 
-import commands.auth as auth
-import commands.post as post
-import utils.conf as conf
+import gcal_discord_poster.commands.auth as auth
+import gcal_discord_poster.commands.post as post
+import gcal_discord_poster.utils.conf as conf
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 CLIENT_ID_PATH = os.path.join(DIR_PATH, "client_id.json")

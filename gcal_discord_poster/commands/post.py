@@ -26,7 +26,7 @@ import argparse
 import datetime
 import logging
 
-import commands
+import gcal_discord_poster.commands as commands
 
 import inflection
 
@@ -34,7 +34,7 @@ from bs4 import BeautifulSoup
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from googleapiclient.discovery import build
 
-import utils.conf as conf
+import gcal_discord_poster.utils.conf as conf
 
 COMMAND = "post"
 
